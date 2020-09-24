@@ -35,7 +35,7 @@ version: "3"
 services:
   nginx:
     build:
-      context: /app
+      context: ./app
       dockerfile: Dockerfile
     ports:
       - "80:80" # 宿主机端口:容器端口
