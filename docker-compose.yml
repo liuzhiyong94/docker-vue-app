@@ -1,33 +1,42 @@
+# version: "3"
+# services:
+#   db:
+#     image: mysql:5.7
+#     # network_mode: "host" # 如果需要容器使用宿主机IP(内网IP)，则可以配置此项
+#     restart: always
+#     container_name: mysql_5.7
+#     ports:
+#       - 3306:3306 # 宿主机端口:容器端口
+#     environment:
+#       - TZ=Asia/Shanghai # 设置容器时区与宿主机保持一致
+#       - MYSQL_ROOT_PASSWORD=root # 设置root密码
+#     command:
+#       --lower_case_table_names=1
+#       --character-set-server=utf8mb4
+#       --collation-server=utf8mb4_general_ci
+#       --explicit_defaults_for_timestamp=true
+#     volumes:
+#       - /etc/localtime:/etc/localtime:ro # 设置容器时区与宿主机保持一致
+#       - ./mysql/data:/var/lib/mysql # 映射数据库保存目录到宿主机，防止数据丢失
+#       #- /home/mysql/my.cnf:/etc/mysql/my.cnf # 映射数据库配置文件   配置有问题，导致报错
+#   nginx:
+#     image: nginx
+#     restart: always
+#     ports:
+#       - 8080:80
+#       - 80:80
+#       - 443:443
+#     volumes:
+#       - ./nginx/conf:/etc/nginx/conf.d
+#       - ./nginx/log:/var/log/nginx
+#       - ./nginx/www:/var/www
+
 version: "3"
 services:
-  db:
-    image: mysql:5.7
-    # network_mode: "host" # 如果需要容器使用宿主机IP(内网IP)，则可以配置此项
-    restart: always
-    container_name: mysql_5.7
+  nginx:
+    build:
+      context: /app
+      dockerfile: Dockerfile
     ports:
-      - 3306:3306 # 宿主机端口:容器端口
-    environment:
-      - TZ=Asia/Shanghai # 设置容器时区与宿主机保持一致
-      - MYSQL_ROOT_PASSWORD=root # 设置root密码
-    command: 
-      --lower_case_table_names=1
-      --character-set-server=utf8mb4
-      --collation-server=utf8mb4_general_ci
-      --explicit_defaults_for_timestamp=true
-    volumes:
-      - /etc/localtime:/etc/localtime:ro # 设置容器时区与宿主机保持一致
-      - ./mysql/data:/var/lib/mysql # 映射数据库保存目录到宿主机，防止数据丢失
-      #- /home/mysql/my.cnf:/etc/mysql/my.cnf # 映射数据库配置文件   配置有问题，导致报错
-  nginx: 
-    image: nginx
+      - "80:80" # 宿主机端口:容器端口
     restart: always
-    ports:
-      - 8080:80
-      - 80:80
-      - 443:443
-    volumes:
-      - ./nginx/conf:/etc/nginx/conf.d
-      - ./nginx/log:/var/log/nginx
-      - ./nginx/www:/var/www
-
