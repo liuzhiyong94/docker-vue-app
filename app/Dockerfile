@@ -1,5 +1,5 @@
 # 镜像来源
-FROM nginx:1.19.2
+FROM nginx:1.17.2
 # 作者 MAINTAINER已经被弃用
 # MAINTAINER 刘志勇 
 # 删除nginx 默认配置
