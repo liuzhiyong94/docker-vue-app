@@ -33,6 +33,7 @@
 
 version: "3"
 services:
+
   nginx:
     build:
       context: ./app
@@ -40,12 +41,26 @@ services:
     ports:
       - "80:80" # 宿主机端口:容器端口
     restart: always
+    container_name: hcxw_nginx
+
   authserver:
     build:
-      context: ./authServer
+      context: ./authserver
       dockerfile: Dockerfile
     ports:
       - "3000:3000" # 宿主机端口:容器端口
     restart: always
     volumes:
-      - "./images:/app/authserver/web/upload/images" # 容器目录挂载到宿主机目录
+      - "./authserver_web:/home/authserver/web" # 容器目录挂载到宿主机目录
+    container_name: hcxw_authserver
+
+  webserver:
+    build:
+      context: ./webserver
+      dockerfile: Dockerfile
+    ports:
+      - "3010:3010" # 宿主机端口:容器端口
+    restart: always
+    volumes:
+      - "./webserver_web:/home/webserver/web" # 容器目录挂载到宿主机目录
+    container_name: hcxw_webserver
