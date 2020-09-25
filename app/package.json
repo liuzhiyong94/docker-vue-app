@@ -42,7 +42,7 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "no-unused-vars": false
+      "no-unused-vars": 0
     }
   },
   "browserslist": [
