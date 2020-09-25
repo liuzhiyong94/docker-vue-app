@@ -24,7 +24,7 @@ pnpm-debug.log*
 
 /web
 
-/settings.js
+# /settings.js
 
 /data.json
 
