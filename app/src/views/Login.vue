@@ -83,6 +83,7 @@ export default {
                     });
                 }
             } catch (error) {
+                loading.close();
                 this.$message({
                     message: error,
                     type: "warning",

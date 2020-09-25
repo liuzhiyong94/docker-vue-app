@@ -17,10 +17,19 @@ function syncTokens(cb) {
     db.query(sql, [], function (err, result) {
         // console.log('err:',err);
         // console.log('err:',result);
-        for (var i = 0; i < result.length; i++) {
-            settings.tokenObj[result[i].id] = result[i];
+        // for (var i = 0; i < result.length; i++) {
+        //     settings.tokenObj[result[i].id] = result[i];
+        // }
+        // cb(null, true);
+        if (err) {
+
         }
-        cb(null, true);
+        else {
+            for (var i = 0; i < result.length; i++) {
+                settings.tokenObj[result[i].id] = result[i];
+            }
+            cb(null, true);
+        }
     })
 }
 exports.syncTokens = syncTokens;
@@ -634,7 +643,7 @@ exports.GetApi = function (_req, _res, _callback) {
                 var sqlCmd = ''
                 var sqlParams = []
                 var p_detail = content.p_detail
-                for(var i = 0; i < p_detail.length; i++) {
+                for (var i = 0; i < p_detail.length; i++) {
                     sqlCmd += 'insert into filestore (fileid,item_name,count,unit_price,item_amount,class,manual_proportion,manual_amount) values (?,?,?,?,?,?,?,?);'
                     sqlParams.push(fileid, p_detail[i].item_name, p_detail[i].count, p_detail[i].unit_price, p_detail[i].item_amount, p_detail[i].calss, p_detail[i].manual_proportion, p_detail[i].manual_amount)
                 }
@@ -2108,14 +2117,14 @@ exports.GetApi = function (_req, _res, _callback) {
             var sqlWhere = "";
             sqlWhere += ' and ticketID=? '
             sqlParams.push(caseId)
-            if(reportno) {
+            if (reportno) {
                 sqlWhere += ' and reportno=? '
                 sqlParams.push(reportno)
             }
             sqlCmd += sqlWhere += ' order by uploadtime desc limit ?,?;'
             sqlParams.push(page * pagesize, pagesize)
             Me.db.query(sqlCmd, sqlParams, function (err, results) {
-                if(err) {
+                if (err) {
                     return Me.cb(300, "数据异常", "");
                 } else {
                     return Me.cb(200, "查询成功", results)
