@@ -40,3 +40,12 @@ services:
     ports:
       - "80:80" # 宿主机端口:容器端口
     restart: always
+  authserver:
+    build:
+      context: ./authServer
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # 宿主机端口:容器端口
+    restart: always
+    volumes:
+      - "./images:/app/authserver/web/upload/images" # 容器目录挂载到宿主机目录
