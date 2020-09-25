@@ -1,8 +1,8 @@
 FROM node:12.18.4
 
-ADD . /app/authserver
+ADD . /home/authserver
 
-WORKDIR /app/authserver
+WORKDIR /home/authserver
 
 RUN npm install 
 

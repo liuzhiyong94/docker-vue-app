@@ -25,7 +25,7 @@
             "limitPerDay": 0,
             "limitPerMonth": 0
         },
-        SavePath: "/app/authserver/web/upload/images/",
+        SavePath: "/home/authserver/web/upload/images/",
         FileUrl: "http://192.168.1.19:3000/"
     };
 }).call(this);
