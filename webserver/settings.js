@@ -1,7 +1,7 @@
 ﻿(function () {
     module.exports = {
         cookie_secret: 'secret_meteoric',
-        serverPort: 3010,
+        serverPort: 3100,
         privateKey: 'hcxwwhrb2019',
         mysql: {
             database: 'ocrnationalserviceplatform',

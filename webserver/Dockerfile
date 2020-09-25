@@ -6,6 +6,6 @@ WORKDIR /home/webserver
 
 RUN npm install 
 
-EXPOSE 3010
+EXPOSE 3100
 
 CMD ["npm", "start"]

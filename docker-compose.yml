@@ -59,7 +59,7 @@ services:
       context: ./webserver
       dockerfile: Dockerfile
     ports:
-      - "3010:3010" # 宿主机端口:容器端口
+      - "3100:3100" # 宿主机端口:容器端口
     restart: always
     volumes:
       - "./webserver_web:/home/webserver/web" # 容器目录挂载到宿主机目录
