@@ -65,7 +65,10 @@ services:
     container_name: hcxw_webserver
 
   mysql:
-    image: mysql:5.7
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    # image: mysql:5.7
     # network_mode: "host" # 如果需要容器使用宿主机IP(内网IP)，则可以配置此项
     restart: always
     container_name: hcxw_mysql
@@ -76,6 +79,6 @@ services:
       - "MYSQL_ROOT_PASSWORD=123456" # 设置root密码
     volumes:
       - "/etc/localtime:/etc/localtime:ro" # 设置容器时区与宿主机保持一致
-      - "./mysql/db:/var/lib/mysql" # 映射数据库保存目录到宿主机，防止数据丢失
-      - "./mysql/conf/my.cnf:/etc/my.cnf"
-      - "./mysql/init:/docker-entrypoint-initdb.d/"
+      # - "./mysql/db:/var/lib/mysql" # 映射数据库保存目录到宿主机，防止数据丢失
+      # - "./mysql/conf/my.cnf:/etc/my.cnf"
+      # - "./mysql/init:/docker-entrypoint-initdb.d/"
