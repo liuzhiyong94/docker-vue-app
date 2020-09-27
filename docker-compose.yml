@@ -65,10 +65,10 @@ services:
     container_name: hcxw_webserver
 
   mysql:
-    # build:
-      # context: ./mysql
-      # dockerfile: Dockerfile
-    image: mysql:5.7
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    # image: mysql:5.7
     restart: always
     container_name: hcxw_mysql
     ports:
@@ -79,5 +79,5 @@ services:
     volumes:
       - "/etc/localtime:/etc/localtime:ro" # 设置容器时区与宿主机保持一致
       - "./mysql/db:/var/lib/mysql" # 映射数据库保存目录到宿主机，防止数据丢失
-      - "./mysql/conf/my.cnf:/etc/my.cnf"
-      - "./mysql/init:/docker-entrypoint-initdb.d/"
+      # - "./mysql/conf/my.cnf:/etc/my.cnf"
+      # - "./mysql/init:/docker-entrypoint-initdb.d/"
