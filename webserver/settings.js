@@ -5,9 +5,9 @@
         privateKey: 'hcxwwhrb2019',
         mysql: {
             database: 'ocrnationalserviceplatform',
-            host: '192.168.1.19',
-            user: 'assist',
-            password: 'ipcamera',
+            host: 'mysql',  //指定yml文件中的mysql的名字
+            user: 'root',
+            password: '123456',
             port: 3306,
             connectionLimit: 120,
             multipleStatements: true

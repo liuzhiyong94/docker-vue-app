@@ -141,7 +141,7 @@ exports.GetApi = function (_req, _res, _callback) {
             var sqlParams = [username, password];
             Me.db.query(sqlCmd, sqlParams, function (_err, _results) {
                 if (_err) {
-                    return Me.cb(300, "数据异常", "");
+                    return Me.cb(300, _err, "");
                 }
                 else {
                     if (_results.length) {
