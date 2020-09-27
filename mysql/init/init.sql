@@ -15,10 +15,6 @@ Date: 2020-09-25 17:20:41
 
 SET FOREIGN_KEY_CHECKS=0;
 
-CREATE DATABASE ocrnationalserviceplatform;
-
-USE ocrnationalserviceplatform;
-
 -- ----------------------------
 -- Table structure for `druglist`
 -- ----------------------------

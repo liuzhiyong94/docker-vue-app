@@ -50,7 +50,7 @@ services:
       - "3000:3000" # 宿主机端口:容器端口
     restart: always
     volumes:
-      - "./authserver_web:/home/authserver/web" # 容器目录挂载到宿主机目录
+      - "/authserver_web:/home/authserver/web" # 容器目录挂载到宿主机目录
     container_name: hcxw_authserver
 
   webserver:
@@ -61,14 +61,14 @@ services:
       - "3100:3100" # 宿主机端口:容器端口
     restart: always
     volumes:
-      - "./webserver_web:/home/webserver/web" # 容器目录挂载到宿主机目录
+      - "/webserver_web:/home/webserver/web" # 容器目录挂载到宿主机目录
     container_name: hcxw_webserver
 
   mysql:
-    build:
-      context: ./mysql
-      dockerfile: Dockerfile
-    # image: mysql:5.7
+    # build:
+    #   context: ./mysql
+    #   dockerfile: Dockerfile
+    image: mysql:5.7
     restart: always
     container_name: hcxw_mysql
     ports:
@@ -76,8 +76,9 @@ services:
     environment:
       - "TZ=Asia/Shanghai" # 设置容器时区与宿主机保持一致
       - "MYSQL_ROOT_PASSWORD=123456" # 设置root密码
+      - "MYSQL_DATABASE=ocrnationalserviceplatform"
     volumes:
       - "/etc/localtime:/etc/localtime:ro" # 设置容器时区与宿主机保持一致
-      - "./mysql/db:/var/lib/mysql" # 映射数据库保存目录到宿主机，防止数据丢失
-      # - "./mysql/conf/my.cnf:/etc/my.cnf"
-      # - "./mysql/init:/docker-entrypoint-initdb.d/"
+      - "/mysql/db:/var/lib/mysql" # 映射数据库保存目录到宿主机，防止数据丢失
+      - "/mysql/conf/my.cnf:/etc/my.cnf"
+      - "/mysql/init:/docker-entrypoint-initdb.d/"
