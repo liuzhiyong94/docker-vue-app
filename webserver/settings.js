@@ -12,8 +12,8 @@
             connectionLimit: 120,
             multipleStatements: true
         },
-        FileUrl: "http://localhost:3000/",
-        FrontService: "http://localhost:3000/",
+        FileUrl: "http://47.116.76.208:3000/",
+        FrontService: "http://authserver:3000/",
         tokenObj: {}
     };
 }).call(this);

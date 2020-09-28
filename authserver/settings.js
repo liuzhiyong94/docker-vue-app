@@ -5,9 +5,9 @@
         privateKey: 'hcxwwhrb2019',
         mysql: {
             database: 'ocrnationalserviceplatform',
-            host: '192.168.1.19',
-            user: 'assist',
-            password: 'ipcamera',
+            host: 'mysql',
+            user: 'root',
+            password: '123456',
             port: 3306,
             connectionLimit: 120,
             multipleStatements: true
@@ -26,6 +26,6 @@
             "limitPerMonth": 0
         },
         SavePath: "/home/authserver/web/upload/images/",
-        FileUrl: "http://192.168.1.19:3000/"
+        FileUrl: "http://47.116.76.208:3000/"
     };
 }).call(this);

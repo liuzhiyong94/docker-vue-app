@@ -1210,7 +1210,7 @@ exports.GetApi = function (_req, _res, _callback) {
                 reportno: reportno
             }
             request.post({
-                url: settings.FrontService + "/typedocr",
+                url: settings.FrontService + "typedocr",
                 body: JSON.stringify(params),
                 timeout: 3 * 60 * 1000,
                 headers: {
@@ -1222,7 +1222,7 @@ exports.GetApi = function (_req, _res, _callback) {
                         return Me.cb(300, "上传失败", "")
                     }
                     else {
-                        return Me.cb(200, "上传成功", "上传成功")
+                        return Me.cb(200, "上传成功", body)
                     }
                 }
             );
